@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,700;1,200;1,300&display=swap" rel="stylesheet">
+        
+        <style>
+          /* for design  */
+*{
+   font-family: 'Poppins', sans-serif;
+   margin: 0;
+   padding: 0;
+   text-decoration: none;
+   outline: none;
+}
+
+html{
+   font-size: 100%;
+   overflow-x: hidden;
+}
+
+.header{
+   width: 100%;
+   height: 90vh;
+   background-image: url("./apparelapp/static/apparelapp/images/uidesign/headerhome.jpeg");
+   background-size: cover;
+   display: flex;
+   align-items: center;
+   justify-content:flex-end;
+   background-repeat: no-repeat;
+}
+
+.header .start-text{
+   transform: translateY(50px);
+   opacity: 0.3;
+   color: rgb(48, 44, 44);
+   margin-right: 20%;
+   text-align: center;
+   animation: move 1s ease-out forwards;
+}
+
+.header .start-text h1{
+    transform: translateY(45px);
+    opacity: 0.3;
+    font-size: 65px;
+    margin: 0;
+    animation: move 1s ease-out forwards;
+}
+.header .start-text p{
+    transform: translateY(30px);
+    font-size: 15px;
+    opacity: 0.3;
+    animation: move 1s ease-out forwards;
+}
+
+.header .start-text a{
+    text-decoration: none;
+    opacity: 0.3;
+    color: rgb(54, 53, 53);
+    border: 1px solid rgba(54, 53, 53, 0.7);
+    padding: 15px 25px;
+    border-radius: 5px;
+    transform: translateY(50px);
+    transition: 0.5s ease-in;
+    animation: move 1s ease-out forwards;
+}
+
+@keyframes move{
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header .start-text a:hover{
+    color: white;
+    background-color: rgb(235, 173, 87);
+    border: 1px solid rgba(235, 173, 87, 0.7);
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    justify-content: space-evenly;
+}
+.container .item{
+    text-align: center;
+    padding: 55px;
+}
+.container .item:nth-child(2), .container .item:nth-child(3){
+    border-left: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.container .item img{
+    width: 65px;
+    opacity: 0.8;
+    height: auto;
+}
+
+.container .item h3{
+    font-size: 20px;
+    font-weight:200;
+}
+
+.container .item p{
+    font-size: 15px;
+    font-weight:200;
+    width: 300px;
+}
+
+footer{
+    background-color: #f6f6f8;
+}
+/* .certificate .box-content .box:hover .image img{
+    transform: scale(1.2);
+ } 
+
+ .certificate .box-content .box .image{
+    height: 300px;
+    width: 100%;    
+    border-radius: 8px;
+    overflow: hidden;
+ }
+ .certificate .box-content .box .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .5s linear;
+ } */
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><strong>Men Apparel</strong></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="apparelapp:home"> HOME </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="apparelapp:cart"> CART </a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" {% block isdisabled %}{% endblock  %}>
+                       SHOP 
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="">All</a></li>
+                      <li><a class="dropdown-item" href="">Shirts</a></li>
+                      <li><a class="dropdown-item" href="">Jeans and Trousers</a></li>
+                      <li><a class="dropdown-item" href="">Shorts</a></li>
+                      <li><a class="dropdown-item" href="">Jacket and Coats</a></li>
+                      <li><a class="dropdown-item" href="">Underwear</a></li>
+                      <li><a class="dropdown-item" href="">Footwear</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href=""> CONTACT </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <section>
+            <div class='header'>
+                <div class="start-text">
+                    <p><i>- S T Y L I S H -</i></p>
+                    <h1>Men Clothes</h1>
+                    <p>100% off Summer Vacation</p>
+                    <a class='button' href="">SHOP NOW</a>
+                </div>
+            </div>
+            <div >
+                <div class="container">
+                    <div class="item">
+                        <img class="" src="./apparelapp/static/apparelapp/images/uidesign/freeshipping.jpg" alt="...">
+                        <h3>Free Shipping</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
+                    </div>
+                    <div class="item">
+                        <img class="" src="./apparelapp/static/apparelapp/images/uidesign/247.png" alt="...">
+                        <h3>Support 24/7</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
+                    </div>
+                    <div class="item">
+                        <img class="" src="./apparelapp/static/apparelapp/images/uidesign/moneyback.png" alt="...">
+                        <h3>Money Return</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div>
+                <div class="row text-center">
+                    <div class="col-5">
+                        <h4>Men Apparel</h1>
+                        <p>All Rights Reserved</p>
+                    </div>
+                    <div class="col-2">
+                        <h6>ABOUT US</h6>
+                        <p>About us</p>
+                        <p>Contact</p>
+                        <p>Order tracking</p>
+                    </div>
+                    <div class="col-2">
+                        <h6>FOLLOW US</h6>
+                        <p>Facebook</p>
+                        <p>Twitter</p>
+                        <p>Instagram</p>
+                        <p>Youtube</p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

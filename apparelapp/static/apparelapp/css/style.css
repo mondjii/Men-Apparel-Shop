@@ -1,0 +1,117 @@
+/* for design  */
+*{
+   font-family: 'Poppins', sans-serif;
+   margin: 0;
+   padding: 0;
+   text-decoration: none;
+   outline: none;
+}
+
+html{
+   font-size: 100%;
+   overflow-x: hidden;
+}
+
+.header .start-text{
+   transform: translateY(50px);
+   opacity: 0.3;
+   color: rgb(48, 44, 44);
+   margin-right: 20%;
+   text-align: center;
+   animation: move 1s ease-out forwards;
+}
+
+.header .start-text h1{
+    transform: translateY(45px);
+    opacity: 0.3;
+    font-size: 65px;
+    margin: 0;
+    animation: move 1s ease-out forwards;
+}
+.header .start-text p{
+    transform: translateY(30px);
+    font-size: 15px;
+    opacity: 0.3;
+    animation: move 1s ease-out forwards;
+}
+
+.header .start-text a{
+    text-decoration: none;
+    opacity: 0.3;
+    color: rgb(54, 53, 53);
+    border: 1px solid rgba(54, 53, 53, 0.7);
+    padding: 15px 25px;
+    border-radius: 5px;
+    transform: translateY(50px);
+    transition: 0.5s ease-in;
+    animation: move 1s ease-out forwards;
+}
+
+.header .start-text a:hover{
+    color: white;
+    background-color: rgb(235, 173, 87);
+    border: 1px solid rgba(235, 173, 87, 0.7);
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    justify-content: space-evenly;
+}
+.container .item{
+    text-align: center;
+    padding: 55px;
+}
+.container .item:nth-child(2), .container .item:nth-child(3){
+    border-left: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.container .item img{
+    width: 65px;
+    opacity: 0.8;
+    height: auto;
+}
+
+.container .item h3{
+    font-size: 20px;
+    font-weight:200;
+}
+
+.container .item p{
+    font-size: 15px;
+    font-weight:200;
+    width: 300px;
+}
+footer{
+    background-color: #f7f7f7;
+}
+
+
+@keyframes move{
+   to {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+
+
+
+/* .certificate .box-content .box:hover .image img{
+    transform: scale(1.2);
+ } 
+
+ .certificate .box-content .box .image{
+    height: 300px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+ }
+ .certificate .box-content .box .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .5s linear;
+ } */
