@@ -35,17 +35,13 @@
                     <a class="nav-link" href="{% url "apparelapp:cart" %}"> CART </a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" {% block isdisabled %}{% endblock  %}>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                        SHOP 
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url "apparelapp:apparels" %}">All</a></li>
-                      <li><a class="dropdown-item" href="{% url "apparelapp:apparels" %}">Shirts</a></li>
-                      <li><a class="dropdown-item" href="{% url "apparelapp:apparels" %}">Jeans and Trousers</a></li>
-                      <li><a class="dropdown-item" href="{% url "apparelapp:apparels" %}">Shorts</a></li>
-                      <li><a class="dropdown-item" href="{% url "apparelapp:apparels" %}">Jacket and Coats</a></li>
-                      <li><a class="dropdown-item" href="{% url "apparelapp:apparels" %}">Underwear</a></li>
-                      <li><a class="dropdown-item" href="{% url "apparelapp:apparels" %}">Footwear</a></li>
+                      <li><a class="dropdown-item" href="{% url "apparelapp:topapparels" %}">Topwears</a></li>
+                      <li><a class="dropdown-item" href="{% url "apparelapp:botapparels" %}">Bottomwears</a></li>
+                      <li><a class="dropdown-item" href="{% url "apparelapp:footapparels" %}">Footwear</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">

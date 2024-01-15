@@ -1,5 +1,5 @@
 from django.contrib import admin
-# from .models import Apparel,Cart
+from .models import *
 
 # Register your models here.
 # class ApparelDisplay(admin.ModelAdmin):
@@ -7,5 +7,8 @@ from django.contrib import admin
 #         ('ITEMS', {'fields':['']})
 #     ]
 
-# admin.site.register(Apparel)
-# admin.site.register(Cart)
+
+admin.site.register(SizeCategory)
+admin.site.register(Size)
+admin.site.register(Apparel)
+admin.site.register(Cart)

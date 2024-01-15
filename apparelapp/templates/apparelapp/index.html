@@ -9,7 +9,7 @@
     background-size: cover;
     display: flex;
     align-items: center;
-    justify-content:flex-end;
+    justify-content:flex-end;   
     background-repeat: no-repeat;
  }
 
@@ -20,13 +20,13 @@
 <section>
     <div class='header'>
         <div class="start-text">
-            <p><i>- S T Y L I S H -</i></p>
+            <p><i> &#8212; S T Y L I S H &#8212;</i></p>
             <h1>Men Clothes</h1>
             <p>100% off Summer Vacation</p>
-            <a class='button' href="">SHOP NOW</a>
+            <a class='button' href="{% url "apparelapp:apparels" %}">SHOP NOW</a>
         </div>
     </div>
-    <div >
+    <div id='service'>
         <div class="container">
             <div class="item">
                 <img class="" src="{% static "apparelapp/images/uidesign/freeshipping.jpg" %}" alt="...">
@@ -43,6 +43,19 @@
                 <h3>Money Return</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
             </div>
+        </div>
+    </div>
+    <div id='category'>
+        <div id='category-title'>
+            <h3> &#8212; Style Gallery &#8212; </h3>
+            <p>Swagger Up with Style Gallery's Dapper Picks for Men</p>
+        </div>
+        <div id='Gallery'>
+            {% for i in "12345"|slice:":5" %}
+            <div class="outfits">
+                <img src="{% static "apparelapp/images/uidesign/outfit" %}{{forloop.counter}}.png" alt="outfit{{forloop.counter}}">
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
