@@ -1,9 +1,36 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<ul>
-    <li><a href="{% url "apparelapp:topapparels" %}">TOP</a></li>
-    <li><a href="{% url "apparelapp:topapparels" %}">BOT</a></li>
-    <li><a href="{% url "apparelapp:topapparels" %}">FOOT</a></li>
-</ul>
-{% endblock content %}
+<section>
+       <div class='types'>
+            <div class='type'>
+                <img src='' alt='topwear'>
+                <div class='typelink'>
+                    <h3>TopWears</h3>
+                    <p>Shirts,Jackets, and Coats.</p>
+                    <a class='button' href="{% url "apparelapp:topapparels" %}">Shop Now</a>
+                </div>
+            </div>
+
+            <div class='type'>
+                <img src='' alt='botwear'>
+                <div class='typelink'>
+                    <h3>Bottomwears</h3>
+                    <p>Shorts, Jeans, Trouser, Underwears.</p>
+                    <a class='button' href="{% url "apparelapp:botapparels" %}">Shop Now</a>
+                </div>
+            </div>
+
+            <div class='type'>
+                <img src='' alt='footwear'>
+                <div class='typelink'>
+                    <h3>Footwears</h3>
+                    <p>Sneakers, Casual shoes, Loafers, and Sandals. </p>
+                    <a class='button' href="{% url "apparelapp:footapparels" %}">Shop Now</a>
+                </div>
+            </div>
+       </div>
+    </section>
+
+{% endblock content %}            

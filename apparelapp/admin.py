@@ -7,8 +7,5 @@ from .models import *
 #         ('ITEMS', {'fields':['']})
 #     ]
 
-
-admin.site.register(SizeCategory)
-admin.site.register(Size)
 admin.site.register(Apparel)
 admin.site.register(Cart)

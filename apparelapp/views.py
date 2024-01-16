@@ -12,10 +12,9 @@ def redirecthome(request):
 class HomeView(TemplateView):
     template_name = "apparelapp/index.html"
 
-class ApparelsView(ListView):
-    model = Apparel
+class ApparelsView(TemplateView):
     template_name = "apparelapp/apparels.html"
-    context_object_name = 'apparels'
+    
 
 class BottomwearListView(ListView):
     model = Apparel
@@ -34,9 +33,8 @@ class FootwearListView(ListView):
 
 class ApparelDetailView(DetailView):
     model = Apparel
+    context_object_name = 'apparel_details'
     template_name = "apparelapp/apparel_detail.html"
-
-
 
 
 class CartListView(ListView):

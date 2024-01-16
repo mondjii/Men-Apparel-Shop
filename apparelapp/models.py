@@ -5,19 +5,6 @@ from django.db.models import Q
 from django.core.validators import MinValueValidator, MaxValueValidator
 import uuid
 
-class SizeCategory(models.Model):
-    type = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.type
-
-class Size(models.Model):
-    name = models.CharField(max_length=20, unique=True)
-    category = models.ForeignKey(SizeCategory, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.category} - {self.name}"
-
 class Apparel(models.Model):
     TYPE_CHOICES = (
         ('Topwear', 'Topwear'),
@@ -40,20 +27,10 @@ class Apparel(models.Model):
     type = models.CharField(max_length=10, choices=TYPE_CHOICES)
     sub_type = models.CharField(max_length=20, choices=SUBTYPE_CHOICES, blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
-    size_categories = models.ManyToManyField(SizeCategory, through='ApparelSizeCategory')
-
-    def display_sizes(self):
-        return ', '.join(str(size) for size in self.size_categories.all())
+    img = models.ImageField(upload_to='images/apparels/', height_field=None, width_field=None, max_length=None, null=True, blank=True)
 
     def __str__(self):
         return f"{self.name} - {self.get_type_display()} - {self.sub_type} - {self.price}"
-
-class ApparelSizeCategory(models.Model):
-    apparel = models.ForeignKey(Apparel, on_delete=models.CASCADE)
-    size_category = models.ForeignKey(SizeCategory, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.apparel} - {self.size_category}"
 
 class Cart(models.Model):
     product_purchase = models.ForeignKey(Apparel, on_delete=models.CASCADE )

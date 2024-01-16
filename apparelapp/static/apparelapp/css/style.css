@@ -49,8 +49,8 @@ html{
 
 .header .start-text a:hover{
     color: white;
-    background-color: rgb(235, 173, 87);
-    border: 1px solid rgba(235, 173, 87, 0.7);
+    background-color: rgb(238, 194, 132);
+    border: 1px solid rgba(253, 200, 126, 0.7);
 }
 
 #service .container{
