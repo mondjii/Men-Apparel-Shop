@@ -15,7 +15,6 @@ class HomeView(TemplateView):
 class ApparelsView(TemplateView):
     template_name = "apparelapp/apparels.html"
     
-
 class BottomwearListView(ListView):
     model = Apparel
     template_name = "apparelapp/bottomwear_list.html"
