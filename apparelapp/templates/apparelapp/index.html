@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-
+{% block title %}HOME{% endblock title %}
 {% block content %}
 <section>
     <div class='header'>
@@ -46,28 +46,29 @@
     </div>
 </section>
 <footer>
-    <div>
-        <div class="row text-center">
-            <div class="col-5">
-                <h4>Men Apparel</h1>
-                <p>All Rights Reserved</p>
-            </div>
-            <div class="col-2">
-                <h6>ABOUT US</h6>
-                <p>About us</p>
-                <p>Contact</p>
-                <p>Order tracking</p>
-            </div>
-            <div class="col-2">
-                <h6>FOLLOW US</h6>
-                <p>Facebook</p>
-                <p>Twitter</p>
-                <p>Instagram</p>
-                <p>Youtube</p>
-                <p></p>
-                <p></p>
+    <div class="row text-center">
+        <div class="title col-5">
+            <h4>Men Apparel</h1>
+            <p> &#169; All Rights Reserved</p>
+        </div>
+        <div class="foot col">
+            <div class="row">
+                <div class='col'>
+                    <h5>ABOUT US</h5>
+                    <p>About us</p>
+                    <p>Contact</p>
+                    <p>Order tracking</p>
+                </div>
+                <div class='col'>
+                    <h5>FOLLOW US</h5>
+                    <p>Facebook</p>
+                    <p>Twitter</p>
+                    <p>Instagram</p>
+                    <p>Youtube</p>
+                </div>
             </div>
         </div>
+        
     </div>
 </footer>
 {% endblock content %}

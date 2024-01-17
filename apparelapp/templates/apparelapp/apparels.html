@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-<section>
-       <div class='types'>
-            <div class='type'>
-                <img src='' alt='topwear'>
+<section class='container'>
+       <div id='types'>
+            <div class='type right'>
+                <img src="{% static "apparelapp/images/uidesign/shirts.png" %}" alt='topwear'>
                 <div class='typelink'>
                     <h3>TopWears</h3>
                     <p>Shirts,Jackets, and Coats.</p>
@@ -13,8 +13,8 @@
                 </div>
             </div>
 
-            <div class='type'>
-                <img src='' alt='botwear'>
+            <div class='type left'>
+                <img src="{% static "apparelapp/images/uidesign/pants.png" %}" alt='botwear'>
                 <div class='typelink'>
                     <h3>Bottomwears</h3>
                     <p>Shorts, Jeans, Trouser, Underwears.</p>
@@ -22,13 +22,40 @@
                 </div>
             </div>
 
-            <div class='type'>
-                <img src='' alt='footwear'>
+            <div class='type right'>
+                <img src="{% static "apparelapp/images/uidesign/shoess.png" %}" alt='footwear'>
                 <div class='typelink'>
                     <h3>Footwears</h3>
                     <p>Sneakers, Casual shoes, Loafers, and Sandals. </p>
                     <a class='button' href="{% url "apparelapp:footapparels" %}">Shop Now</a>
                 </div>
+            </div>
+       </div>
+
+       <div id='categories'>
+            <div class='category'>
+                <img src="" alt="...">
+            </div>
+            <div class='category'>
+                <img src="" alt="...">
+            </div>
+            <div class='category'>
+                <img src="" alt="...">
+            </div>
+            <div class='category'>
+                <img src="" alt="...">
+            </div>
+            <div class='category'>
+                <img src="" alt="...">
+            </div>
+            <div class='category'>
+                <img src="" alt="...">
+            </div>
+            <div class='category'>
+                <img src="" alt="...">
+            </div>
+            <div class='category'>
+                <img src="" alt="...">
             </div>
        </div>
     </section>
