@@ -2,62 +2,99 @@
 {% load static %}
 
 {% block content %}
-<section class='container'>
+<section class='container-fluid'>
        <div id='types'>
-            <div class='type right'>
-                <img src="{% static "apparelapp/images/uidesign/shirts.png" %}" alt='topwear'>
-                <div class='typelink'>
-                    <h3>TopWears</h3>
+            <div class='type rounded' >
+                <img class='img-fluid rounded' src="{% static "apparelapp/images/uidesign/shirts.png" %}" alt='topwear'>
+                <div class='typelink left'>
+                    <h1>TopWears</h1>
                     <p>Shirts,Jackets, and Coats.</p>
-                    <a class='button' href="{% url "apparelapp:topapparels" %}">Shop Now</a>
+                    <a class='button' href="{% url "apparelapp:topapparels" %}">Visit</a>
                 </div>
             </div>
 
-            <div class='type left'>
-                <img src="{% static "apparelapp/images/uidesign/pants.png" %}" alt='botwear'>
-                <div class='typelink'>
-                    <h3>Bottomwears</h3>
-                    <p>Shorts, Jeans, Trouser, Underwears.</p>
-                    <a class='button' href="{% url "apparelapp:botapparels" %}">Shop Now</a>
+            <div class='type rounded'>
+                <img class='img-fluid rounded' src="{% static "apparelapp/images/uidesign/pants.png" %}" alt='botwear'>
+                <div class='typelink right'>
+                    <h1>Bottomwears</h1>
+                    <p>Shorts, Jeans, Trouser, and Underwears.</p>
+                    <a class='button' href="{% url "apparelapp:botapparels" %}">Visit</a>
                 </div>
             </div>
 
-            <div class='type right'>
-                <img src="{% static "apparelapp/images/uidesign/shoess.png" %}" alt='footwear'>
-                <div class='typelink'>
-                    <h3>Footwears</h3>
+            <div class='type rounded'>
+                <img class='img-fluid rounded' src="{% static "apparelapp/images/uidesign/shoess.png" %}" alt='footwear'>
+                <div class='typelink left'>
+                    <h1>Footwears</h1>
                     <p>Sneakers, Casual shoes, Loafers, and Sandals. </p>
-                    <a class='button' href="{% url "apparelapp:footapparels" %}">Shop Now</a>
+                    <a class='button' href="{% url "apparelapp:footapparels" %}">Visit</a>
                 </div>
             </div>
        </div>
-
-       <div id='categories'>
-            <div class='category'>
-                <img src="" alt="...">
+       <div class='container category' >
+            <div class='category-title'>
+                <h1 class='title'> &#8212; C A T E G O R I E S &#8212; </h1>
+                <p class='title-quote'>Men's exclusive sections, explore now!</p>
             </div>
-            <div class='category'>
-                <img src="" alt="...">
-            </div>
-            <div class='category'>
-                <img src="" alt="...">
-            </div>
-            <div class='category'>
-                <img src="" alt="...">
-            </div>
-            <div class='category'>
-                <img src="" alt="...">
-            </div>
-            <div class='category'>
-                <img src="" alt="...">
-            </div>
-            <div class='category'>
-                <img src="" alt="...">
-            </div>
-            <div class='category'>
-                <img src="" alt="...">
+            <div class='Gallery'>
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/coats_categ.png" %}" alt="...">
+                    <div class='direct '>
+                        <h4 class='title'>Coats</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>  
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/jackets_categ.png" %}" alt="...">
+                    <div class='direct'>
+                        <h4 class='title'>Jackets</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/jeans_categ.png" %}" alt="...">
+                    <div class='direct'>
+                        <h4 class='title'>Jeans</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/shirts_categ.png" %}" alt="...">
+                    <div class='direct'>
+                        <h4 class='title'>Shirts</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/shoes_categ.png" %}" alt="...">
+                    <div class='direct'>
+                        <h4 class='title' >Shoes</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/shorts_categ.png" %}" alt="...">
+                    <div class='direct'>
+                        <h4 class='title'>Shorts</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/trousers_categ.png" %}" alt="...">
+                    <div class='direct'>
+                        <h4 class='title'>Trouser</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>
+                <div class='categ rounded'>
+                    <img src="{% static "apparelapp/images/uidesign/undies_categ.png" %}" alt="...">
+                    <div class='direct'>
+                        <h4 class=''>Underwear</h4>
+                        <a href=''>Shop now!</a>
+                    </div>
+                </div>
             </div>
        </div>
-    </section>
+</section>
 
 {% endblock content %}            

@@ -15,28 +15,28 @@
     <div id='service'>
         <div class="container">
             <div class="item">
-                <img class="" src="{% static "apparelapp/images/uidesign/freeshipping.jpg" %}" alt="...">
-                <h3>Free Shipping</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
+                <img src="{% static "apparelapp/images/uidesign/freeshipping.jpg" %}" alt="...">
+                <h3 class='title'>Free Shipping</h3>
+                <p class='title-quote'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
             </div>
             <div class="item">
-                <img class="" src="{% static "apparelapp/images/uidesign/247.png" %}" alt="...">
+                <img src="{% static "apparelapp/images/uidesign/247.png" %}" alt="...">
                 <h3>Support 24/7</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
+                <p class='title-quote'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
             </div>
             <div class="item">
-                <img class="" src="{% static "apparelapp/images/uidesign/moneyback.png" %}" alt="...">
+                <img src="{% static "apparelapp/images/uidesign/moneyback.png" %}" alt="...">
                 <h3>Money Return</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
+                <p class='title-quote'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, obcaecati!</p>
             </div>
         </div>
     </div>
-    <div id='category'>
-        <div id='category-title'>
-            <h3> &#8212; Style Gallery &#8212; </h3>
-            <p>Swagger Up with Style Gallery's Dapper Picks for Men</p>
+    <div class='category'>
+        <div class='category-title'>
+            <h3 class='title'> &#8212; Style Gallery &#8212; </h3>
+            <p class='title-quote'>Swagger Up with Style Gallery's Dapper Picks for Men</p>
         </div>
-        <div id='Gallery'>
+        <div class='Gallery'>
             {% for i in "12345"|slice:":5" %}
             <div class="outfits">
                 <img src="{% static "apparelapp/images/uidesign/outfit" %}{{forloop.counter}}.png" alt="outfit{{forloop.counter}}">
@@ -47,9 +47,9 @@
 </section>
 <footer>
     <div class="row text-center">
-        <div class="title col-5">
-            <h4>Men Apparel</h1>
-            <p> &#169; All Rights Reserved</p>
+        <div class="col-5">
+            <h1>Men Apparel</h1>
+            <p class='title-quote'> &#169; All Rights Reserved</p>
         </div>
         <div class="foot col">
             <div class="row">

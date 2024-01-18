@@ -19,22 +19,30 @@ class BottomwearListView(ListView):
     model = Apparel
     template_name = "apparelapp/bottomwear_list.html"
     context_object_name = 'apparels'
+    
+    def get_queryset(self):
+        return super().get_queryset().filter(type='Bottomwear')
 
 class TopwearListView(ListView):
     model = Apparel
     template_name = "apparelapp/topwear_list.html"
     context_object_name = 'apparels'
 
+    def get_queryset(self):
+        return super().get_queryset().filter(type='Topwear')
+    
 class FootwearListView(ListView):
     model = Apparel
     template_name = "apparelapp/footwear_list.html"
     context_object_name = 'apparels'
 
+    def get_queryset(self):
+        return super().get_queryset().filter(type='Footwear')
+    
 class ApparelDetailView(DetailView):
     model = Apparel
     context_object_name = 'apparel_details'
     template_name = "apparelapp/apparel_detail.html"
-
 
 class CartListView(ListView):
     model = Cart
