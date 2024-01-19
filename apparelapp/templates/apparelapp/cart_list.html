@@ -1,1 +1,15 @@
 {% extends "base.html" %}
+
+{% block title %}
+My Cart
+{% endblock title %}
+
+{% block content %}
+
+{% for item in items %}
+
+<p>{{ item.product_purchase.name }}</p>
+
+{% endfor %}
+
+{% endblock content %}

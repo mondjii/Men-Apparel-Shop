@@ -21,11 +21,6 @@ class ContactForm(forms.Form):
                                widget= forms.Textarea(attrs={'class':'form-control'}))
     
 
-class AddCartForm(forms.ModelForm):
-    class Meta:
-        model = Cart
-        fields = '__all__'
-
-        labels = {
-
-        }
+class AddCartForm(forms.Form):
+    quantity = forms.IntegerField(initial=1, min_value=1, max_value=5)
+    size = forms.CharField( max_length=10, required=False)

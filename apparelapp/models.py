@@ -33,16 +33,19 @@ class Apparel(models.Model):
         return f"{self.name} - {self.get_type_display()} - {self.sub_type} - {self.price}"
 
 class Cart(models.Model):
-    product_purchase = models.ForeignKey(Apparel, on_delete=models.CASCADE )
+    product_purchase = models.ForeignKey(Apparel, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     size = models.CharField(max_length =10)
     total_amount = models.DecimalField(max_digits=7, decimal_places=2)
 
 def truncate_apparel():
     with connection.cursor() as cursor:
-        table_name = Cart._meta.db_table
+        table_name = Apparel._meta.db_table
         cursor.execute(f'DELETE FROM {table_name};')
         cursor.execute(f'VACUUM;')
 
-
-#if condtion nalang kpapag topwewar edi xyz somethinasdadssa
+def truncate_cart():
+    with connection.cursor() as cursor:
+        table_name = Cart._meta.db_table
+        cursor.execute(f'DELETE FROM {table_name};')
+        cursor.execute(f'VACUUM;')

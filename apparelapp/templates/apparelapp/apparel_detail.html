@@ -4,13 +4,18 @@
 {% block content %}
 <section>
     <div>
-        {{apparel_details.name}}
+       <h1> {{apparel_details.name}}</h1>
         {{apparel_details.type}}
         {{apparel_details.sub_type}}
         {{apparel_details.price}}
+    <img src="{{apparel_details.img.url}}" alt="{{apparel_details.img.url}}">
     </div>
     <div>
-        form here
+        <form method='POST'>
+            {% csrf_token %}
+            {{cart_form.as_p}}
+            <button type="submit">Add to Cart</button>
+        </form>
     </div>
 </section>
 
