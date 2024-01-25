@@ -1,8 +1,8 @@
 from django.urls import path
 from .views import (HomeView, ApparelsView,
                     TopwearListView, BottomwearListView, FootwearListView,
-                    ApparelDetailView, CartListView,
-                    ContactFormView,
+                    ApparelDetailView, CartListView, CartDeleteView, CartUpdateView,
+                    ContactFormView, UserInfoDetailView, CreateUser,
                     thankyoupage, redirecthome)
 
 app_name = 'apparelapp'
@@ -11,14 +11,18 @@ urlpatterns = [
     path('', redirecthome, name='redirecthome'),
     path('home/', HomeView.as_view(), name='home'),
 
-    path('apparels/', ApparelsView.as_view(), name='apparels'),
-    path('apparels/topwears', TopwearListView.as_view(), name='topapparels'),
-    path('apparels/bottomwears', BottomwearListView.as_view(), name='botapparels'),
-    path('apparels/footwears', FootwearListView.as_view(), name='footapparels'),
+    path('catalog/', ApparelsView.as_view(), name='apparels'),
+    path('catalog/topwears', TopwearListView.as_view(), name='topapparels'),
+    path('catalog/bottomwears', BottomwearListView.as_view(), name='botapparels'),
+    path('catalog/footwears', FootwearListView.as_view(), name='footapparels'),
 
     path('Addcart/<int:pk>/', ApparelDetailView.as_view(), name='addcart'),
+    path('delete/<int:pk>/', CartDeleteView.as_view(), name='delete'),
+    path('update/<int:pk>/', CartUpdateView.as_view(), name='update'),
     path('cart/', CartListView.as_view(), name='cart'),
 
+    path('register/', CreateUser.as_view(), name='register'),
+    path('account/<int:pk>/', UserInfoDetailView.as_view(), name='account'),
     path('contact/', ContactFormView.as_view(), name='contact'),
     path('thankyou/', thankyoupage, name='thankyou')
 ]

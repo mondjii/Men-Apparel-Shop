@@ -8,4 +8,5 @@ from .models import *
 #     ]
 
 admin.site.register(Apparel)
-admin.site.register(Cart)
+admin.site.register(CartItem)
+admin.site.register(UserInfo)

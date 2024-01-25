@@ -10,6 +10,8 @@
 <a href="{% url "apparelapp:addcart" pk=apparel.id %}">
     {{apparel.name}}
 </a>
+<img src='{{apparel.img.url}}' alt='tite'>
+
 </p>
 {% endfor %}
 

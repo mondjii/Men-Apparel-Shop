@@ -1,5 +1,8 @@
 from django import forms
-from apparelapp.models import Cart,Apparel
+from django.contrib.auth.forms import UserCreationForm
+from .models import UserInfo
+
+from django.contrib.auth.models import User
 
 class ContactForm(forms.Form):
     Fullname = forms.CharField(label='Name ', 
@@ -19,7 +22,16 @@ class ContactForm(forms.Form):
                                max_length=1000, 
                                required=False,
                                widget= forms.Textarea(attrs={'class':'form-control'}))
-    
+
+class NewUserForm(forms.Form):
+    username = forms.CharField(label='Username', max_length=50, required=True)
+    password = forms.CharField(label='Password', max_length=100, required=True, widget=forms.PasswordInput)
+    location = forms.CharField(label='Address', max_length=100, required=True)
+    pnumber = forms.CharField(label='Phone Number',max_length=13, required=True)
+    first_name = forms.CharField(label='First Name',max_length=50, required=True)
+    last_name = forms.CharField(label='Last Name',max_length=50, required=True)
+    email = forms.EmailField(label='Email',required=True)
+
 
 class AddCartForm(forms.Form):
     quantity = forms.IntegerField(initial=1, min_value=1, max_value=5)

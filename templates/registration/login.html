@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p> not log </p>
+        {% else %}
+            <p> please log </p>
+        {% endif %}
+    {% endif %} 
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{form.username.label_tag}}
+        {{form.username}}
+        <br>
+        {{form.password.label_tag}}
+        {{form.password}}
+        <input type="submit" value="Login">
+        <input type='hidden' name='next' value="{{next}}">
+    </form>
+
+    <a href="{% url "apparelapp:register" %}">create acc</a>
+    
+    {% if form.errors %}
+    <p style='color:red;'>Incorrect Password. Try again.</p>
+    {% endif %}
+
+{% endblock content %}
+
+

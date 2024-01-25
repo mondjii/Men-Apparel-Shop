@@ -3,7 +3,8 @@ from django.db import models
 from django.db import connection
 from django.db.models import Q
 from django.core.validators import MinValueValidator, MaxValueValidator
-import uuid
+from django.contrib.auth.models import User, Group
+
 
 class Apparel(models.Model):
     TYPE_CHOICES = (
@@ -32,11 +33,21 @@ class Apparel(models.Model):
     def __str__(self):
         return f"{self.name} - {self.get_type_display()} - {self.sub_type} - {self.price}"
 
-class Cart(models.Model):
+class UserInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(max_length=100)
+    pnumber = models.CharField(max_length=13)
+    
+class CartItem(models.Model):
+    cart_owner = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name = 'cartitem')
     product_purchase = models.ForeignKey(Apparel, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     size = models.CharField(max_length =10)
     total_amount = models.DecimalField(max_digits=7, decimal_places=2)
+
+    def update_total_amount(self):
+        self.total_amount = self.quantity * self.product_purchase.price
+        self.save()
 
 def truncate_apparel():
     with connection.cursor() as cursor:
@@ -46,6 +57,6 @@ def truncate_apparel():
 
 def truncate_cart():
     with connection.cursor() as cursor:
-        table_name = Cart._meta.db_table
+        table_name = CartItem._meta.db_table
         cursor.execute(f'DELETE FROM {table_name};')
         cursor.execute(f'VACUUM;')

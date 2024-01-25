@@ -6,7 +6,9 @@
 {% block content %}
 
 {% for apparel in apparels %}
-{{apparel.name}}
+<a href='{% url "apparelapp:addcart" pk=apparel.id %}'>{{apparel.name}}</a>
+<img src='{{apparel.img.url}}' alt='tite'>
+
 {% endfor %}
   
 {% endblock content %}

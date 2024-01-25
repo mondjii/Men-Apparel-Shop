@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Account Info{% endblock title %}
+
+{% block content %}
+    loggedin
+    <br>
+    {{user.user.first_name  }}
+    {{user.pnum}}
+    {{user.location}}
+    <a href="{% url "logout"%}?next{{request.path}} ">logout</a>
+
+{% endblock content %}
