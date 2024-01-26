@@ -2,11 +2,37 @@
 {% block title %}Signup{% endblock title %}
 
 {% block content %}
+<div>
+    <div>
+        <div>
+            <h1>Create Account</h1>
+        </div>
+        <div class='container'>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Account Information</h3>
+                <label for='username' class='form-label'>{{form.username.label_tag}}</label>
+                {{form.username}}
+                <label for='' class='form-label'>{{form.password.label_tag}}</label>
+                {{form.password}}
+                <label for='' class='form-label'>{{form.email.label_tag}} </label>
+                {{form.email}}
+                <h3>Personal Information</h3>
+                <label for='' class='form-label'>{{form.first_name.label_tag}}</label>
+                {{form.first_name}}
+                <label for='' class='form-label'>{{form.last_name.label_tag}}</label>
+                {{form.last_name}}
+                <label for='' class='form-label'>{{form.location.label_tag}}</label>
+                {{form.location}}
+                <label for='' class='form-label'>{{form.pnumber.label_tag}}</label>
+                {{form.pnumber}}
+                <label for="profile" class="form-label">{{form.profile.label_tag}}</label>
+                {{form.profile}}
 
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Create">
-</form>
-
+                <p style='list-style-type: none; color:red;'>{{ form.username.errors }}</p>
+                <input type="submit" class='button' value="Create Account">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

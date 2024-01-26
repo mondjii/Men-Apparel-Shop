@@ -38,7 +38,8 @@ class TopwearListView(ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(type='Topwear')
-    #want multile filters
+    #ask if possible: want multile filters with different name
+
 class FootwearListView(ListView):
     model = Apparel
     template_name = "apparelapp/footwear_list.html"
@@ -118,34 +119,39 @@ class CreateUser(FormView):
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 
+    def checkuserexists(self, username):
+        if User.objects.filter(username=username).exists():
+            return True
+        else:
+            return False
+
     def form_valid(self, form):
-        username = form.cleaned_data['username']
-        userexists = authenticate(username=username)
-        if userexists is not None:
-            print('tite')
-            form.add_error('username', 'This username is already in use.')
-            return self.template_name
-        
-        password = form.cleaned_data['password']
-        firstname = form.cleaned_data['first_name']
-        lastname = form.cleaned_data['last_name']
-        email = form.cleaned_data['email']
-        loc = form.cleaned_data['location']
-        pnum = form.cleaned_data['pnumber']
+        username = form.cleaned_data['username'].strip()
 
-        #creating user
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.first_name = firstname
-        user.last_name = lastname
+        if self.checkuserexists(username=username):
+            form.add_error('username', 'This username is already taken. Please choose a different one.')
+            return self.form_invalid(form)
+        else:
+            password = form.cleaned_data['password']
+            firstname = form.cleaned_data['first_name']
+            lastname = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            loc = form.cleaned_data['location']
+            pnum = form.cleaned_data['pnumber']
 
-        #adding user to the group
-        group = Group.objects.get(name='customers')
-        user.groups.add(group)
-        user.save()
-        
-        #create user's info
-        UserInfo.objects.create(user=user, location=loc, pnumber=pnum)
-        return super().form_valid(form)
+            #creating user
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.first_name = firstname
+            user.last_name = lastname
+
+            #adding user to the group
+            group = Group.objects.get(name='customers')
+            user.groups.add(group)
+            user.save()
+            
+            #create user's info
+            UserInfo.objects.create(user=user, location=loc, pnumber=pnum)
+            return super().form_valid(form)
     
 class ContactFormView(FormView):
     form_class = ContactForm
