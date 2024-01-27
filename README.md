@@ -5,3 +5,4 @@
 ### features/ui that are not yet complete
   - design in login/register/logout/cart/list of items
   - checkout an item
+  - login authentication 
