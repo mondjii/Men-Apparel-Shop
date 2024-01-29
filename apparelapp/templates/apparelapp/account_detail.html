@@ -3,11 +3,10 @@
 {% block title %}Account Info{% endblock title %}
 
 {% block content %}
-    loggedin
+
+    <h3>Welcome  {{userinfo.user.first_name}}!</h3>
     <br>
-    {{user.user.first_name  }}
-    {{user.pnum}}
-    {{user.location}}
-    <a href="{% url "logout"%}?next{{request.path}} ">logout</a>
+    <h3>{{userinfo.location}}</h3>
+    <img src='{{userinfo.profilepic}}'>
 
 {% endblock content %}

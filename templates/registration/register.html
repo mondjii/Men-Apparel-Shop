@@ -3,9 +3,10 @@
 
 {% block content %}
 <div>
-    <div>
+    <div class='container' style='background-color: #FFE6CC; padding: 5em; border-radius: 30px; width:65%'>
         <div>
             <h1>Create Account</h1>
+            <br/>
         </div>
         <div class='container'>
             <form method="post" enctype="multipart/form-data">
@@ -17,6 +18,7 @@
                 {{form.password}}
                 <label for='' class='form-label'>{{form.email.label_tag}} </label>
                 {{form.email}}
+                <br/>
                 <h3>Personal Information</h3>
                 <label for='' class='form-label'>{{form.first_name.label_tag}}</label>
                 {{form.first_name}}
@@ -31,6 +33,7 @@
 
                 <p style='list-style-type: none; color:red;'>{{ form.username.errors }}</p>
                 <input type="submit" class='button' value="Create Account">
+
             </form>
         </div>
     </div>

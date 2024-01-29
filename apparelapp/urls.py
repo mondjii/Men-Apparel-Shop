@@ -21,8 +21,8 @@ urlpatterns = [
     path('update/<int:pk>/', CartUpdateView.as_view(), name='update'),
     path('cart/', CartListView.as_view(), name='cart'),
 
+    path('account/', UserInfoDetailView.as_view(), name='account'),
     path('register/', CreateUser.as_view(), name='register'),
-    path('account/<int:pk>/', UserInfoDetailView.as_view(), name='account'),
     path('contact/', ContactFormView.as_view(), name='contact'),
     path('thankyou/', thankyoupage, name='thankyou')
 ]

@@ -4,6 +4,7 @@
    margin: 0;
    padding: 0;
    text-decoration: none;
+   box-sizing: border-box;
    outline: none;
 }
 
@@ -11,6 +12,8 @@ html{
    font-size: 100%;
    overflow-x: hidden;
 }
+
+
 .header{
     width: 100%;
     height: 90vh;
@@ -104,28 +107,28 @@ html{
     text-align: center;
 }
 
-.category .Gallery {
+.Gallery {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-evenly;
-        gap: 20px 10px;
+        gap: 1.2em 1em;
     }
-.category .Gallery .outfits{
+.Gallery .outfits{
         position: relative;
         width: 250px;
         height: 460px;
         overflow: hidden;
 }
 
-.category .Gallery .outfits img{
+.Gallery .outfits img{
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 1s ease;
 }
 
-.category .Gallery .categ{
+.Gallery .categ{
     position: relative;
     width: 18em;
     height: 18em;
@@ -133,7 +136,7 @@ html{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.category .Gallery .categ .direct{
+.Gallery .categ .direct{
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -145,12 +148,12 @@ html{
     border-radius: 20px;
 }
 
-.category .Gallery .categ .direct a{
+.Gallery .categ .direct a{
     text-decoration: none;
     color: inherit;
 }
 
-.category .Gallery .categ .direct a:hover{
+.Gallery .categ .direct a:hover{
     text-decoration: underline;
 }
 
@@ -158,7 +161,7 @@ html{
     display: block;
 }
 
-.category .Gallery .categ img{
+.Gallery .categ img{
     position: absolute;
     top: 0;
     right: 0;
@@ -171,7 +174,7 @@ html{
     transition: transform 0.3s ease;
 }
 
-.category .Gallery .outfits img:hover, .category .Gallery .categ img:hover {
+.Gallery .outfits img:hover, .Gallery .categ img:hover {
     transform: scale(1.1);
 }
 
@@ -198,14 +201,14 @@ footer .row .foot .row .col p{
     margin: 10px 50px;
 }
 
-#types .type{
+.type{
     position: relative;
     width: 100%;
     height: 370px;
     overflow: hidden;
 }
 
-#types .type::before {
+.type::before {
     content: '';
     position: absolute;
     top: 0;
@@ -263,6 +266,7 @@ footer .row .foot .row .col p{
     color: white;
     border: 1px solid white;
 }
+
 
 
 

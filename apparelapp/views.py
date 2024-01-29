@@ -5,8 +5,9 @@ from django.views.generic import (TemplateView,
                                   ListView, DetailView,
                                   FormView, CreateView, UpdateView, DeleteView )
 
-from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin #for CBV
+from django.shortcuts import get_object_or_404
+
 from django.contrib.auth.models import Group, User
 
 from .models import Apparel, CartItem, UserInfo
@@ -108,10 +109,10 @@ class CartDeleteView(LoginRequiredMixin, DeleteView):
 class UserInfoDetailView(LoginRequiredMixin, DetailView):
     model = UserInfo
     template_name = "apparelapp/account_detail.html"
-    context_object_name = 'user'
+    context_object_name = 'userinfo'
 
     def get_object(self, queryset=None):
-        user_info = UserInfo.objects.get(user=self.request.user)
+        user_info = get_object_or_404(UserInfo, user=self.request.user)
         return user_info
     
 class CreateUser(FormView):

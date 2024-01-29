@@ -1,32 +1,45 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p> not log </p>
-        {% else %}
-            <p> please log </p>
-        {% endif %}
-    {% endif %} 
+<div class='logincontainer' style='display:flex; justify-content: center; align-items: center; height: 90vh;'>
+    <div id='loginform' style='background-color:wheat; width: 75vw; height: 75vh; display:flex'>
+        <div style=' flex: 1;'>
+            <img src="{% static "apparelapp/images/uidesign/loginimage.jpg" %}" alt='...' style='width:100%; height:100%; object-fit:cover; object-position: center; '>
+            <div class='content'>
+                
+            </div>
+        </div>
+        <div class='container' style='flex: 1;'>             
+            {% if next %}
+                {% if user.is_authenticated %}
+                    <p> not log </p>
+                {% else %}
+                    <p> LOGIN </p>
+                {% endif %}
+            {% endif %} 
+                <form method="post" action="">
+                    {% csrf_token %}
+                    
+                    {{form.username.label_tag}}
+                    {{form.username}}
+                    <br>
+                    {{form.password.label_tag}}
+                    {{form.password}}
+                    <input type="submit" value="Login">
+                    <input type='hidden' name='next' value="{{next}}">
+                </form>
+                {% if form.errors %}
+                    <p style='color:red;'>Incorrect. Try again.</p>
+                {% endif %}
+                <p>Don't have an account? <a href="{% url "apparelapp:register" %}">Create account</a></p>
+        </div>
+    </div>
+</div>
 
-    <form method="post" action="">
-        {% csrf_token %}
-        {{form.username.label_tag}}
-        {{form.username}}
-        <br>
-        {{form.password.label_tag}}
-        {{form.password}}
-        <input type="submit" value="Login">
-        <input type='hidden' name='next' value="{{next}}">
-    </form>
-
-    <a href="{% url "apparelapp:register" %}">create acc</a>
-    
-    {% if form.errors %}
-    <p style='color:red;'>Incorrect Password. Try again.</p>
-    {% endif %}
 
 {% endblock content %}
+
 
 

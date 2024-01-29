@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="{% static "apparelapp/css/style.css" %}">
 
     </head>
-    <body>
+    <body style='{% block bodyStyle %}{% endblock bodyStyle %}'>
         <nav class="navbar navbar-expand-lg" style='background-color: #ffffff'>
             <div class="container-fluid">
               <a class="navbar-brand" href="#"><strong>Men Apparel</strong></a>
@@ -44,13 +44,22 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url "apparelapp:contact" %}"> CONTACT </a>
                   </li>
-                  <li class="nav-item">
                   {% if user.is_authenticated %}
-                      <a class="nav-link" href="{% url 'apparelapp:account' pk=user.id %}">ACCOUNT</a>
-                  {% else %}
-                      <a class="nav-link" href="{% url 'login' %}?next={{request.path}}">LOGIN</a>
-                  {% endif %}
+                  
+
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'apparelapp:account' %}">ACCOUNT</a>
+                      {% comment %} maybe try disbling it {% endcomment %}
                   </li>
+                  <li class="nav-item">
+                    <a class='nav-link' href="{% url "logout"%}?next={{request.path}} ">logout</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                  </li>
+                  {% endif %}
+                  
                 </ul>
               </div>
             </div>
