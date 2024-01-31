@@ -1,9 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Logout{% endblock title %}
 
 
 {% block content %}
-        <p>  You have logged out</p>
-        <a href="{% url "login" %}">Login</a>
+        <div class='container text-center align-items-center' >
+                <h1 class='title' style='font-weight: 400; transform: translateY(50px); opacity: 0.3; animation: move 1s ease-out forwards;'> You have logged out.</h1>
+                <p style='font-weight: 300; transform: translateX(100px); opacity: 0.3; animation: move 1s ease-out forwards;'> Until The Next Encounter, Gentlemen!</p>
+                <img class="img-fluid " style='transform: translateX(-100px); opacity: 0.3; animation: move 1s ease-out forwards; border-radius: 68% 32% 31% 69% / 47% 53% 47% 53% ; height: 25em;  width: 20em; box-shadow: 0 4px 8px rgba(5, 0, 0, 0.6);' src="{% static "apparelapp/images/uidesign/logoutimage.png" %}">
+                <br/>
+                <br/>
+                <a class='button'  href="{% url "login" %}">Login</a>
+                <a class='button' href="{% url "apparelapp:home" %}">Go Home</a>
+        </div>
 {% endblock content %}

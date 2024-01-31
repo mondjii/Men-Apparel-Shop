@@ -139,6 +139,7 @@ class CreateUser(FormView):
             email = form.cleaned_data['email']
             loc = form.cleaned_data['location']
             pnum = form.cleaned_data['pnumber']
+            profpic = form.cleaned_data['profile']
 
             #creating user
             user = User.objects.create_user(username=username, email=email, password=password)
@@ -151,7 +152,7 @@ class CreateUser(FormView):
             user.save()
             
             #create user's info
-            UserInfo.objects.create(user=user, location=loc, pnumber=pnum)
+            UserInfo.objects.create(user=user, location=loc, pnumber=pnum, profilepic=profpic)
             return super().form_valid(form)
     
 class ContactFormView(FormView):

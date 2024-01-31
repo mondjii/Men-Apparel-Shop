@@ -3,6 +3,7 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
+
 <div class='logincontainer' style='display:flex; justify-content: center; align-items: center; height: 90vh;'>
     <div id='loginform' style='background-color:wheat; width: 75vw; height: 75vh; display:flex'>
         <div style=' flex: 1;'>
@@ -14,7 +15,7 @@
         <div class='container' style='flex: 1;'>             
             {% if next %}
                 {% if user.is_authenticated %}
-                    <p> not log </p>
+                    <p> - </p>
                 {% else %}
                     <p> LOGIN </p>
                 {% endif %}

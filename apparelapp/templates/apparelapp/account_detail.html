@@ -4,9 +4,9 @@
 
 {% block content %}
 
-    <h3>Welcome  {{userinfo.user.first_name}}!</h3>
+    <h3>Welcome {{userinfo.user.first_name}}!</h3>
     <br>
     <h3>{{userinfo.location}}</h3>
-    <img src='{{userinfo.profilepic}}'>
+    <img src='{{userinfo.profilepic.url}}'>
 
 {% endblock content %}
