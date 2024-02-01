@@ -5,67 +5,95 @@
 
 {% block content %}
 
-<div class='container'>
-    <div class='row apparellist'>
-        <h1>Shirts</h1>
-        <div class='apparellist-item' style='display:flex; flex-wrap: wrap; gap:10px 20px'>
-            {% for apparel in apparels %}
-                {% if apparel.sub_type|lower == 'shirts' %}
-                    <div class='apparelitem' style='display'>
-                        <a href="{% url "apparelapp:addcart" pk=apparel.id %}">
-                        <img class='img-thumbnail rounded' src='{{apparel.img.url}}' alt='tite'>
-                        <div class='item-name'>
-                            <p>
-                                <a href='{% url "apparelapp:addcart" pk=apparel.id %}'>{{apparel.name | truncatechars_html:30 | lower | title }}
+<section class='container-fluid'>
+    <div id='types'>
+         <div class='type rounded' >
+             <img class='img-fluid rounded' src="{% static "apparelapp/images/uidesign/shirts.png" %}" alt='topwear'>
+             <div class='typelink left'>
+                 <h1>TopWears</h1>
+                 <p>Shirts,Jackets, and Coats.</p>
+             </div>
+         </div>
+    </div>
+    
+    <div class='container' style='display:flex'>
+        <div style='flex: 20%'>
+            
+        </div>
+        <div style='flex: 80%'>
+            <div class='row apparellist'>
+                <h1 style='font-weight: 600'>Shirts</h1>
+                <div class='apparellist-item' >
+                    {% for apparel in apparels %}
+                        {% if apparel.sub_type|lower == 'shirts' %}
+                            <div class='apparelitem'>
+                                <a href="{% url "apparelapp:addcart" pk=apparel.id %}">
+                                    <div class='item-img'>
+                                        <img class='img-thumbnail' src='{{apparel.img.url}}' alt='...'>
+                                    </div>
+                                <div class='item-name'>
+                                    <p>
+                                        <a class='links' href='{% url "apparelapp:addcart" pk=apparel.id %}'>{{apparel.name | truncatechars_html:30 | upper }}
+                                        </a>
+                                    </p>
+                                    <p>&#8369;{{apparel.price}}</p>
+                                </div>
                                 </a>
-                            </p>
-                        </div>
-                        </a>
-                    </div>
-                {% endif %}
-            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <br/>
+            <div class='row apparellist'>
+                <h1 style='font-weight: 600'>Jackets</h1>
+                <div class='apparellist-item'>
+                    {% for apparel in apparels %}
+                        {% if apparel.sub_type|lower == 'jackets' %}
+                            <div class='apparelitem'>
+                                <a href="{% url "apparelapp:addcart" pk=apparel.id %}">
+                                    <div class='item-img'>
+                                        <img class='img-thumbnail' src='{{apparel.img.url}}' alt='...'>
+                                    </div>
+                                <div class='item-name'>
+                                    <p>
+                                        <a class='links' href='{% url "apparelapp:addcart" pk=apparel.id %}'>{{apparel.name | truncatechars_html:30 | upper }}
+                                        </a>
+                                    </p>
+                                    <p>&#8369;{{apparel.price}}</p>
+                                </div>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <br/>
+            <div class='row apparellist'>
+                <h1 style='font-weight: 600'>Coats</h1>
+                <div class='apparellist-item'>
+                    {% for apparel in apparels %}
+                        {% if apparel.sub_type|lower == 'coats' %}
+                            <div class='apparelitem'>
+                                <a href="{% url "apparelapp:addcart" pk=apparel.id %}">
+                                    <div class='item-img'>
+                                        <img class='img-thumbnail' src='{{apparel.img.url}}' alt='...'>
+                                    </div>
+                                <div class='item-name'>
+                                    <p>
+                                        <a class='links' href='{% url "apparelapp:addcart" pk=apparel.id %}'>{{apparel.name | truncatechars_html:30 | upper }}
+                                        </a>
+                                    </p>
+                                    <p>&#8369;{{apparel.price}}</p>
+                                </div>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
-    <div class='row apparellist'>
-        <h1>Jackets</h1>
-        <div class='apparellist-item' style='display:flex; flex-wrap: wrap; gap:10px 20px'>
-            {% for apparel in apparels %}
-                {% if apparel.sub_type|lower == 'jackets' %}
-                    <div class='apparelitem' style='display'>
-                        <a href="{% url "apparelapp:addcart" pk=apparel.id %}">
-                        <img class='img-thumbnail rounded' src='{{apparel.img.url}}' alt='tite'>
-                        <div class='item-name'>
-                            <p>
-                                <a href='{% url "apparelapp:addcart" pk=apparel.id %}'>{{apparel.name | truncatechars_html:30 | lower | title }}
-                                </a>
-                            </p>
-                        </div>
-                        </a>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-    <div class='row apparellist'>
-        <h1>Coats</h1>
-        <div class='apparellist-item' style='display:flex; flex-wrap: wrap; gap:10px 20px'>
-            {% for apparel in apparels %}
-                {% if apparel.sub_type|lower == 'coats' %}
-                    <div class='apparelitem' style='display'>
-                        <a href="{% url "apparelapp:addcart" pk=apparel.id %}">
-                        <img class='img-thumbnail rounded' src='{{apparel.img.url}}' alt='tite'>
-                        <div class='item-name'>
-                            <p>
-                                <a href='{% url "apparelapp:addcart" pk=apparel.id %}'>{{apparel.name | truncatechars_html:30 | lower | title }}
-                                </a>
-                            </p>
-                        </div>
-                        </a>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-</div>
+</section>
 
 {% endblock content %}
