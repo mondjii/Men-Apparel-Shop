@@ -2,7 +2,10 @@
  A simple e-commerce website where users can buy men's apparel. It is a personal project that serve as a guide while studying CBV
  
 ## My current progress
-  - landing page
+  - design in the following:
+    - landing page and other pages
+    - list of items
+    - user profile
   - list of multiple apparels
   - user can create,login, and logout account
   - view, add, update and remove in cart
@@ -12,7 +15,6 @@
     - login
     - create account
     - cart
-    - list of items
-    - user profile
     - contact
   - checkout an item
+  - sort button for price
