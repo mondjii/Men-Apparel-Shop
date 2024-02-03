@@ -3,10 +3,11 @@ from django.urls import reverse_lazy
 
 from django.views.generic import (TemplateView,
                                   ListView, DetailView,
-                                  FormView, CreateView, UpdateView, DeleteView )
+                                  FormView, UpdateView, DeleteView )
 
 from django.contrib.auth.mixins import LoginRequiredMixin #for CBV
 from django.shortcuts import get_object_or_404
+from .extras import send_email
 
 from django.contrib.auth.models import Group, User
 
@@ -40,6 +41,7 @@ class TopwearListView(ListView):
     def get_queryset(self):
         return super().get_queryset().filter(type='Topwear')
     #ask if possible: want multile filters with different name
+    #
 
 class FootwearListView(ListView):
     model = Apparel
@@ -162,7 +164,11 @@ class ContactFormView(FormView):
 
     def form_valid(self, form):
         print(form.cleaned_data)
-        #send email to me
+        send_email(form.cleaned_data['fullname'],
+                   form.cleaned_data['subject'],
+                   form.cleaned_data['phonenumber'],
+                   form.cleaned_data['gmail'],
+                   form.cleaned_data['comments'])
         return super().form_valid(form)
     
 def thankyoupage(request):

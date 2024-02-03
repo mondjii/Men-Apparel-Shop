@@ -5,22 +5,27 @@ from .models import UserInfo
 from django.contrib.auth.models import User
 
 class ContactForm(forms.Form):
-    Fullname = forms.CharField(label='Name ', 
+    fullname = forms.CharField(label='Name ', 
                                max_length=50, 
-                               required=False, 
+                               required=True, 
                                widget= forms.TextInput(attrs={'class':'form-control', 'id':'fullname'}))
     
+    subject = forms.CharField(label='Subject ', 
+                               max_length=50, 
+                               required=True, 
+                               widget= forms.TextInput(attrs={'class':'form-control', 'id':'subject'}))
+    
     gmail = forms.EmailField(label='Email ', 
-                             required=False,
+                             required=True,
                              widget=forms.EmailInput(attrs={'class': 'form-control', 'id':'gmail'}))
     
     phonenumber = forms.IntegerField(label='Phone Number ', 
-                                     required=False,
+                                     required=True,
                                      widget=forms.NumberInput(attrs={'class':'form-control', 'id':'pnum'}))
     
     comments = forms.CharField(label='Message ', 
                                max_length=1000, 
-                               required=False,
+                               required=True,
                                widget= forms.Textarea(attrs={'class':'form-control', 'id':'comment'}))
 
 class NewUserForm(forms.Form):
@@ -55,6 +60,7 @@ class NewUserForm(forms.Form):
                                widget=forms.ClearableFileInput(attrs={'class':'form-control',
                                                                       'type':'file',
                                                                       'id':'profile'}) )
+
 class AddCartForm(forms.Form):
     quantity = forms.IntegerField(initial=1, 
                                   min_value=1, 
