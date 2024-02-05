@@ -4,9 +4,35 @@
 
 {% block content %}
 
-    <h3>Welcome {{userinfo.user.first_name}}!</h3>
+<div class='container'>
+    <h1 class='profiletitle'>My Account</h1>
+    <div class='profile rounded'>
+        <div style='display:flex; align-items:center'>
+            <div class='img-profile'>
+                <img src='{{userinfo.profilepic.url}}'>
+            </div>
+            <div class='infoprofile'>
+                <h2 class='profiletitle'>{{userinfo.user.first_name | lower | title}} {{userinfo.user.last_name | lower | title}}</h2>
+                <h6 class='profileinfo'>{{userinfo.user.email }}</h6>
+            </div>
+        </div>
+    </div>
     <br>
-    <h3>{{userinfo.location}}</h3>
-    <img src='{{userinfo.profilepic.url}}'>
+    <hr>
+    <br>
+    <div class='profile rounded'>
+        <h3 class='profiletitle'>Personal Information</h3>
+        <hr>
+        <p style='font-weight: 600'>Address:</p>
+        <p class='profileinfo infovalue rounded'>{{userinfo.location}}</p>
+        <p style='font-weight: 600'>Phone Number:</p>
+        <p class='profileinfo infovalue rounded'>63+ {{userinfo.pnumber}}</p>
+    </div>
+
+</div>
+
+    
+
+    
 
 {% endblock content %}
