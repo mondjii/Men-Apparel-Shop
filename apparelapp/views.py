@@ -92,6 +92,14 @@ class CartListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return CartItem.objects.filter(cart_owner__user=self.request.user)
+    
+    def get_context_data(self, **kwargs) -> dict[str]:
+        context = super().get_context_data(**kwargs)
+        total_eachitems = self.get_queryset()
+        total = Decimal(sum([Decimal(item.total_amount) for item in total_eachitems]))
+        context["total"] = total
+        return context
+    
 
 class CartUpdateView(LoginRequiredMixin, UpdateView):
     model = CartItem
@@ -163,7 +171,6 @@ class ContactFormView(FormView):
     success_url = reverse_lazy('apparelapp:thankyou')
 
     def form_valid(self, form):
-        print(form.cleaned_data)
         send_email(form.cleaned_data['fullname'],
                    form.cleaned_data['subject'],
                    form.cleaned_data['phonenumber'],

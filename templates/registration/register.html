@@ -12,6 +12,7 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h3 class='whiteblur p-1'>Account Information</h3>
+                <br>
                 <label for='username' class='form-label whiteblur'>{{form.username.label_tag}}</label>
                 {{form.username}}
                 <label for='' class='form-label whiteblur'>{{form.password.label_tag}}</label>
@@ -20,6 +21,7 @@
                 {{form.email}}
                 <br/>
                 <h3 class='whiteblur p-1'>Personal Information</h3>
+                <br>
                 <label for='' class='form-label whiteblur'>{{form.first_name.label_tag}}</label>
                 {{form.first_name}}
                 <label for='' class='form-label whiteblur'>{{form.last_name.label_tag}}</label>

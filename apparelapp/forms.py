@@ -1,5 +1,6 @@
+from typing import Any
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from .models import UserInfo
 
 from django.contrib.auth.models import User

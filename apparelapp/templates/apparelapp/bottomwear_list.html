@@ -14,13 +14,43 @@
              </div>
          </div>
     </div>
-    <div class ='container'  style='display:flex'>
+    <div class ='d-flex container'>
         <div style='flex: 20%'>
-
+            <div class='ca'>
+                Category
+                <p><a href="{% url "apparelapp:botapparels" %}#shorts">SHORTS</a></p>
+                <p><a href="{% url "apparelapp:botapparels" %}#trousers">TROUSER</a></p>
+                <p><a href="{% url "apparelapp:botapparels" %}#jeans">JEANS</a></p>     
+            </div>
+            <div>
+                Sort
+                <form method="get">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radiofilter" id="default" checked>
+                        <label class="form-check-label" for="default">
+                          Default
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radiofilter" id="htol" >
+                        <label class="form-check-label" for="htol">
+                          Price High to Low 
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radiofilter" id="ltoh">
+                        <label class="form-check-label" for="ltoh">
+                            Price Low to High
+                        </label>
+                      </div>
+                      <input type='submit' value='SORT'>
+                </form>
+            </div>
         </div>
         <div style='flex: 80%'>
             <div class='row apparellist'>
-                <h1 style='font-weight: 600'>Shorts</h1>
+                <h1 style='font-weight: 600' id='shorts'>Shorts</h1>
+                <hr>
                 <div class='apparellist-item'>
                     {% for apparel in apparels %}
                         {% if apparel.sub_type|lower == 'shorts' %}
@@ -43,7 +73,8 @@
             </div>
             <br/>
             <div class='row apparellist'>
-                <h1 style='font-weight: 600'>Trousers</h1>
+                <h1 style='font-weight: 600' id='trousers'>Trousers</h1>
+                <hr>
                 <div class='apparellist-item'>
                     {% for apparel in apparels %}
                         {% if apparel.sub_type|lower == 'trousers' %}
@@ -67,7 +98,7 @@
             </div>
             <br/>
             <div class='row apparellist'>
-                <h1 style='font-weight: 600'>Jeans</h1>
+                <h1 style='font-weight: 600' id='jeans'>Jeans</h1>
                 <hr>
                 <div class='apparellist-item'>
                     {% for apparel in apparels %}

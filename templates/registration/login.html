@@ -1,46 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
+{% load customfilters %}
 {% block title %}Login{% endblock title %}
 
 {% block content %}
 
-<div class='logincontainer' style='display:flex; justify-content: center; align-items: center; height: 90vh;'>
-    <div id='loginform' style='background-color:wheat; width: 75vw; height: 75vh; display:flex'>
-        <div style=' flex: 1;'>
-            <img src="{% static "apparelapp/images/uidesign/loginimage.jpg" %}" alt='...' style='width:100%; height:100%; object-fit:cover; object-position: center; '>
-            <div class='content'>
-                
+<div clas='container'>
+  <div class='d-flex container bg-body-secondary p-4 align-items-center mt-5 rounded' style='height: 31.25em'>
+    <div class='container' style='width:80%; height:80%'>
+        <div class='row rounded' style='box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); background-color:white'>
+          <div class='col p-5'>
+            <h1 class='title'>LOGIN</h1>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-floating mb-3">
+                  {{form.username|add_id:'username'|add_class:'form-control'}}
+                  <label for="username">Email address</label>
+                </div>
+                <div class="form-floating">
+                  {{form.password|add_id:'password'|add_class:'form-control'}}  
+                  <label for="password">Password</label>
+                </div>
+                <br/>
+                <input class='button my-3' type="submit" value="Login">
+                <input type='hidden' name='next' value="{{next}}">
+            </form>
+            {% if form.errors %}
+                <p style='color:red;'>Incorrect. Try again.</p>
+            {% endif %}
+          </div>
+          <div class='col text-center p-2 createform'>
+            <h1 class='title mb-2' style='color:white'>Create Account</h1>
+            <div class='row mb-0 p-5 pb-0'>
             </div>
-        </div>
-        <div class='container' style='flex: 1;'>             
-            {% if next %}
-                {% if user.is_authenticated %}
-                    <p> - </p>
-                {% else %}
-                    <p> LOGIN </p>
-                {% endif %}
-            {% endif %} 
-                <form method="post" action="">
-                    {% csrf_token %}
-                    
-                    {{form.username.label_tag}}
-                    {{form.username}}
-                    <br>
-                    {{form.password.label_tag}}
-                    {{form.password}}
-                    <input type="submit" value="Login">
-                    <input type='hidden' name='next' value="{{next}}">
-                </form>
-                {% if form.errors %}
-                    <p style='color:red;'>Incorrect. Try again.</p>
-                {% endif %}
-                <p>Don't have an account? <a href="{% url "apparelapp:register" %}">Create account</a></p>
+            <div class='row mb-4 p-5 pb-0'>
+              <div class='col-2 whiteblur'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                  <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                </svg>
+              </div>
+              <div class='col-10 whiteblur'>
+                <h5 class='text-start'>Don't have an account? <a href="{% url "apparelapp:register" %}">Create account</a></h5>
+              </div>
+            </div>
+            <div class='row p-5'>
+            </div>
+          </div>
         </div>
     </div>
+  </div>
 </div>
 
 
-{% endblock content %}
 
+{% endblock content %}
 
 

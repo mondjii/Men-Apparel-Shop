@@ -6,8 +6,135 @@ My Cart
 
 {% block content %}
 
-{% for item in items %}
-<p>{{ item.product_purchase.name }}</p>
-{% endfor %}
+<div class='container' style='position:relative'>
+    <div class='d-flex mt-2 justify-content-between' >
+        <div class='d-flex mt-2'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">
+            <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z"/>
+            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+        </svg>
+        <h1 class='px-5'>Your Shopping Cart</h1>
+        </div>
+        <nav class="navbar">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">OPTION</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item my-2">
+                        <a class='nav-link options' href="{% url "apparelapp:apparels" %}">
+                            <div class='d-flex'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                                    </svg>
+                                
+                                <div class='px-3'>
+                                    <h5 class='uline'>Back to Shop</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                   <li class="nav-item my-2">
+                    <a class='nav-link options' href="{% url "apparelapp:apparels" %}">
+                        <div class='d-flex'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-folder-x" viewBox="0 0 16 16">
+                                    <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181L15.546 8H14.54l.265-2.91A1 1 0 0 0 13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91H9v1H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zm6.339-1.577A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"/>
+                                    <path d="M11.854 10.146a.5.5 0 0 0-.707.708L12.293 12l-1.146 1.146a.5.5 0 0 0 .707.708L13 12.707l1.146 1.147a.5.5 0 0 0 .708-.708L13.707 12l1.147-1.146a.5.5 0 0 0-.707-.708L13 11.293z"/>
+                                </svg>
+                                <div class='px-3'>
+                                    <h5 class='uline'>Order History</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li> 
+                    <li class="nav-item dropdown my-2">
+                        <div class='d-flex'>
+                            <div>
+                                <div>
+                                    <button class="navbar-toggler justify-content-center" type='button' data-bs-toggle="collapse" data-bs-target="#summarycontent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-card-checklist text-primary" viewBox="0 0 16 16">
+                                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                                        <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
+                                      </svg>
+                                        Show Summary
+                                    </button>
+                                </div>                                
+                                <div class="collapse" id="summarycontent" data-bs-theme="dark">
+                                    <div class="p-4">
+                                      <h3 style='color:black'>Summary</h3>
+                                        <div>
+                                            <h6>Order Total: ------------- {{total}} <h5>
+                                            <h6>Shipping Fee: ------------ &#8369;30.00<h5>
+                                            <hr> 
+                                            <h5>Total: &#8369; {{total| add:30.00 }}<h5>
+                                        </div>
+                                    </div>
+                                </div>                                  
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item  my-2">
+                        <a class='nav-link options' href="{% url "apparelapp:apparels" %}">
+                        <div class='d-flex'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                                </svg>
+                                <div class='px-3'>
+                                    <h5  class='uline'>Checkout</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+            
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </div>
+
+    <div class='my-5'>
+        {% for item in items %}
+        <div class='d-flex align-items-center mb-2 bg-secondary rounded justify-content-between' style="background-image: url('{{item.product_purchase.img.url}}'); background-size:cover; background-position:center; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+            <div class='col-10 d-flex p-3 align-items-center'>
+                <div class='col-2'>
+                    <img class='mx-3' src="{{item.product_purchase.img.url}}" alt='...' width="170" height="170" style='border-radius:50%;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'>
+                </div>
+                <div class='col-910 d-flex justify-content-evenly'>
+                    <h6 class='whiteblur mx-5'>{{item.product_purchase.name}}</h6>
+                    <p class='whiteblur mx-5'>{{item.quantity}} pc(s)</p>
+                    <p class='whiteblur mx-5'>{{item.size}}</p>
+                    <p class='whiteblur'>{{item.total_amount}}</p>
+                </div>
+            </div>
+            <div class='col-2 d-flex gap-5'>
+                <div class='modifybutton mx-1'>
+                    <a class='nav-link buttonblur' href="{% url "apparelapp:update" pk=item.id %}" style='color:orange' >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                      </svg>
+                    </a>
+                </div>
+                <div class='modifybutton mx-5'>
+                    <a class='nav-link buttonblur' href="{% url "apparelapp:delete" pk=item.id %}"  style='color:red' >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 
 {% endblock content %}

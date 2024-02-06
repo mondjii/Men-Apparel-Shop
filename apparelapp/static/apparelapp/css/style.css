@@ -1,6 +1,7 @@
 /* for design  */
 *{
    font-family: 'Poppins', sans-serif;
+   font-weight: 400;
    margin: 0;
    padding: 0;
    text-decoration: none;
@@ -12,7 +13,6 @@ html{
    font-size: 100%;
    overflow-x: hidden;
 }
-
 
 .header{
     width: 100%;
@@ -53,7 +53,7 @@ html{
     opacity: 0.3;
     color: rgb(54, 53, 53);
     border: 1px solid rgba(54, 53, 53, 0.7);
-    padding: 15px 25px;
+    padding: 14px 25px;
     border-radius: 5px;
     transform: translateY(50px);
     transition: 0.5s ease-in;
@@ -90,12 +90,12 @@ html{
 
 .title{
     font-size: 30px;
-    font-weight:400;
+    font-weight:500;
 }
 
 .title-quote{
     font-size: 15px;
-    font-weight:200;
+    font-weight:300;
 }
 
 .category {
@@ -317,9 +317,72 @@ footer .row .foot .row .col p{
     font-weight: 300;
 }
 
+/* registration and account design */
 
+.createform{
+    background-image: url('/static/apparelapp/images/uidesign/loginimage.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
-/* registration design */
+.profile{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 2em;
+    position: relative;
+}
+
+.img-profile{
+    height: 9.4em;
+    width: 9.4em;
+    position: relative;
+    margin-right: 1em;
+}
+.img-profile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid rgb(62, 62, 62);
+    object-position: center;
+}
+
+.infoprofile{
+    align-items: center;
+}
+
+.profiletitle{
+    font-weight: 600;
+} .profileinfo{
+    font-weight: 300;
+}
+
+.infovalue{
+    padding: 1em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#contactus{
+    background-image: url('/static/apparelapp/images/uidesign/contact.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.whiteblur{
+    backdrop-filter: blur(6px);
+    background-color: #e2e2e222;
+    color: white;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.buttonblur{
+    backdrop-filter: blur(5px);
+    display: inline-block;
+    border-radius: 10px;
+
+}
 
 
 @keyframes move{
