@@ -5,10 +5,9 @@
   - ui design
   - list of multiple apparels
   - user can create,login, and logout account
-  - view, add items in cart
+  - view, add. update, and remove items in cart
   - functional contact US
+  - sort item by price
 
 ## features/ui that are not yet complete
-  - update and remove in cart
   - checkout an item
-  - sort button for price
