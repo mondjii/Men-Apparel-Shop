@@ -1,23 +1,73 @@
 {% extends "base.html" %}
+{% load customfilters %}
 
+{% block title %}Add to Cart{% endblock title %}
+
+{% block extracss %}
+
+<style>
+    .bgimg{
+        width:65vw;
+        height:80vh;
+        background-image: url("{{apparel_details.img.url}}");
+        background-repeat:no-repeat;
+        background-size: cover;
+        background-position:center;
+    }
+    .lengths{
+        width:65px;
+    }
+    label{
+        font-size: 1.2em;
+    }
+</style>
+
+{% endblock extracss %}
 
 {% block content %}
-<section>
+<div class='bgimg container p-3 border rounded mt-3'>
     <div>
-       <h1> {{apparel_details.name}}</h1>
-        {{apparel_details.type}}
-        {{apparel_details.sub_type}}
-        {{apparel_details.price}}
-    <img src="{{apparel_details.img.url}}" alt="{{apparel_details.img.url}}">
+        <div>
+            <div class='d-flex'>
+                <div class='mx-2'>
+                    <img class='shadow-lg rounded-circle' src="{{apparel_details.img.url}}" alt="{{apparel_details.img.url}}" width='300' height='300'>
+                </div>
+                <div  class='m-2'>
+                    <h1 class='whiteblur' style='max-width:37em; font-size:4em'> {{apparel_details.name |truncatechars_html:41|upper}}</h1>
+                    <br>
+                    <h5 class='whiteblur ms-5'>Description: {{apparel_details.type}}-{{apparel_details.sub_type}}</h5>
+                    <h5  class='whiteblur'>{{apparel_details.price}} </h5>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
+    <div class='d-flex flex-column'> 
         <form method='POST'>
             {% csrf_token %}
-            {{cart_form.as_p}}
-            <button type="submit">Add to Cart</button>
+            <div class="form-group mt-3">
+                <label class='form-label whiteblur' for='size'>{{cart_form.size.label_tag}}</label>
+                <br>
+                <div class="form-check form-check-inline">
+                    {% for size in cart_form.size %}
+                    <span class='rounded p-2 mx-1 whiteblur my-1'>{{size}}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+     
+            <div class='d-flex justify-content-between '>
+                <div>
+                    <label class='form-label whiteblur' for='qty'>
+                        {{cart_form.quantity.label_tag}}
+                    </label>
+                    {{cart_form.quantity|add_id:'qty'|add_class:'form-control lengths'}}
+                </div>
+                <button class='button mt-3' type="submit">Add to Cart</button>
+            </div>
+            
         </form>
     </div>
-</section>
+</div>
 
 
 {% endblock content %}

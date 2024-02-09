@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 
 from django.views.generic import (TemplateView,
                                   ListView, DetailView,
@@ -12,7 +13,9 @@ from .extras import send_email
 from django.contrib.auth.models import Group, User
 
 from .models import Apparel, CartItem, UserInfo
-from .forms import ContactForm, AddCartForm, NewUserForm
+from .forms import (ContactForm,
+                    BotwearForm,TopwearForm,FootwearForm,
+                    NewUserForm)
 
 from decimal import Decimal
 
@@ -31,7 +34,16 @@ class BottomwearListView(ListView):
     context_object_name = 'apparels'
     
     def get_queryset(self):
-        return super().get_queryset().filter(type='Bottomwear')
+        queryset = super().get_queryset().filter(type='Bottomwear')
+        sortbased = self.request.GET.get('radiofilter')
+
+        if sortbased == 'htol':
+            queryset = queryset.order_by('-price')
+        elif sortbased == 'ltoh':
+            queryset = queryset.order_by('price')
+        else:
+            queryset = queryset
+        return queryset
 
 class TopwearListView(ListView):
     model = Apparel
@@ -39,8 +51,16 @@ class TopwearListView(ListView):
     context_object_name = 'apparels'
 
     def get_queryset(self):
-        return super().get_queryset().filter(type='Topwear')
-    #ask if possible: want multile filters with different name
+        queryset = super().get_queryset().filter(type='Topwear')
+        sortbased = self.request.GET.get('radiofilter')
+
+        if sortbased == 'htol':
+            queryset = queryset.order_by('-price')
+        elif sortbased == 'ltoh':
+            queryset = queryset.order_by('price')
+        else:
+            queryset = queryset
+        return queryset
     #
 
 class FootwearListView(ListView):
@@ -49,7 +69,16 @@ class FootwearListView(ListView):
     context_object_name = 'apparels'
 
     def get_queryset(self):
-        return super().get_queryset().filter(type='Footwear')
+        queryset = super().get_queryset().filter(type='Footwear')
+        sortbased = self.request.GET.get('radiofilter')
+
+        if sortbased == 'htol':
+            queryset = queryset.order_by('-price')
+        elif sortbased == 'ltoh':
+            queryset = queryset.order_by('price')
+        else:
+            queryset = queryset
+        return queryset
 
 class ApparelDetailView(LoginRequiredMixin, DetailView):
     model = Apparel
@@ -58,14 +87,26 @@ class ApparelDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cart_form"] = AddCartForm()
+        item = self.get_object()
+        if item.sub_type.strip() in ['Jeans','Trousers','Shorts','Underwears']:
+            context["cart_form"] = BotwearForm()
+        elif item.sub_type.strip() in ['Shirts','Coats','Jackets']:
+            context['cart_form'] = TopwearForm()
+        elif item.sub_type.strip() in ['Shoes']:
+            context['cart_form'] = FootwearForm()
         return context
     
     def post(self, request, *args, **kwargs):
         apparel = self.get_object()
-        form = AddCartForm(request.POST)
+      
+        if apparel.sub_type.strip() in ['Jeans','Trousers','Shorts','Underwears']:
+            form = BotwearForm(request.POST)
+        elif apparel.sub_type.strip() in ['Shirts','Coats','Jackets']:
+            form = TopwearForm(request.POST)
+        elif apparel.sub_type.strip() in ['Shoes']:
+            form = FootwearForm(request.POST)
         buyer = UserInfo.objects.get(user=self.request.user)
-        
+       
         if form.is_valid(): 
             qty = form.cleaned_data['quantity']
             total_price = Decimal(apparel.price) * Decimal(qty)
@@ -79,7 +120,7 @@ class ApparelDetailView(LoginRequiredMixin, DetailView):
                 cart_item.save()
             else:
                 CartItem.objects.create(cart_owner=buyer,product_purchase=apparel,quantity=qty,size=sz,total_amount=float(total_price))
-            return redirect('apparelapp:thankyou')
+            return redirect('apparelapp:cart')
         else:
             context = self.get_context_data()
             context['cart_form'] = form
@@ -97,7 +138,9 @@ class CartListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         total_eachitems = self.get_queryset()
         total = Decimal(sum([Decimal(item.total_amount) for item in total_eachitems]))
+        numofitem = len([x for x in total_eachitems])
         context["total"] = total
+        context['numofitems'] = numofitem
         return context
     
 
@@ -109,12 +152,29 @@ class CartUpdateView(LoginRequiredMixin, UpdateView):
 
     success_url = reverse_lazy('apparelapp:cart')
 
+    def form_valid(self, form):
+        #get the object
+        cartitem = self.object
+        print(cartitem.product_purchase)
+        print(cartitem)
+
+        if cartitem.quantity <= 0:
+            # CartItem.objects.filter(product_purchase=cartitem.product_purchase).delete()
+            cartitem.delete()
+            return HttpResponseRedirect(self.success_url)
+        #to update the totalvalue of the item
+        cartitem.update_total_amount()
+        return super().form_valid(form)
+    
+
 class CartDeleteView(LoginRequiredMixin, DeleteView):
     model = CartItem
     template_name = "apparelapp/cart_delete.html"
+    context_object_name = 'items'
+
     success_url = reverse_lazy('apparelapp:cart')
 
-    context_object_name = 'items'
+
 
 class UserInfoDetailView(LoginRequiredMixin, DetailView):
     model = UserInfo
@@ -130,7 +190,7 @@ class CreateUser(FormView):
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 
-    def checkuserexists(self, username):
+    def checkuserexists(self, username) -> bool:
         if User.objects.filter(username=username).exists():
             return True
         else:

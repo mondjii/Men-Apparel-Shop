@@ -62,9 +62,47 @@ class NewUserForm(forms.Form):
                                                                       'type':'file',
                                                                       'id':'profile'}) )
 
-class AddCartForm(forms.Form):
+class BotwearForm(forms.Form):
     quantity = forms.IntegerField(initial=1, 
                                   min_value=1, 
                                   max_value=5)
-    size = forms.CharField( max_length=10, 
-                           required=False)
+    size = forms.ChoiceField(required=True,
+                             choices=[
+                                ('28in', '28 inches'),
+                                ('29in', '29 inches'),
+                                ('30in', '30 inches'),
+                                ('31in', '31 inches'),
+                                ('32in', '32 inches'),
+                                ('free', '32+ inches (Free Size)')
+                            ],
+                            widget=forms.RadioSelect)
+
+class TopwearForm(forms.Form):
+    quantity = forms.IntegerField(initial=1, 
+                                  min_value=1, 
+                                  max_value=5)
+    size = forms.ChoiceField(required=True,
+                             choices=[
+                                ('S', 'Small'),
+                                ('M', 'Medium'),
+                                ('L', 'large'),
+                                ('XL', 'X Large'),
+                                ('XXL', 'XX Large'),
+                                ('XXXL', 'XXX Large')
+                            ],
+                            widget=forms.RadioSelect)
+    
+class FootwearForm(forms.Form):
+    quantity = forms.IntegerField(initial=1, 
+                                  min_value=1, 
+                                  max_value=5)
+    size = forms.ChoiceField(required=True,
+                             choices=[
+                                ('8in', '8 inches'),
+                                ('8.5in', '8.5 inches'),
+                                ('9in', '9 inches'),
+                                ('9.5in', '9.5 inches'),
+                                ('10in', '10 inches'),
+                                ('10.5in', '10.5 inches')
+                            ],
+                            widget=forms.RadioSelect)

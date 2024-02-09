@@ -28,5 +28,3 @@ def send_email(name:str, subject:str,  pnum:str ,email:str ,mess:str,) -> None:
         text = message.as_string()
         server.sendmail(sender_account['email'], recipient_email, text)
         server.quit()
-
-    print("Email sent successfully!")

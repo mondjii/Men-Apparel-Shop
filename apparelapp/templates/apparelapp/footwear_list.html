@@ -17,33 +17,35 @@
 
     <div class ='d-flex container'>
         <div style='flex: 20%'>
-            <div class='ca'>
-                Category
-                <p><a href="{% url "apparelapp:footapparels" %}#shoes">SHOES</a></p>
-                <p><a href="{% url "apparelapp:footapparels" %}#undies">UNDERWEAR</a></p>    
+            <div class=''>
+                <h4 class='my-2'>Category</h4>
+                <div clas='gap-3'>
+                    <a class='nav-link filtercategory rounded my-1' href="{% url "apparelapp:footapparels" %}#shoes">SHOES</a>
+                    <a class='nav-link filtercategory rounded my-1' href="{% url "apparelapp:footapparels" %}#undies">UNDERWEAR</a>
+                </div>
             </div>
             <div>
-                Sort
+                <h4 class='my-2'>Sort</h4>
                 <form method="get">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radiofilter" id="default" checked>
+                    <div class="form-check my-2">
+                        <input class="form-check-input shadow" type="radio" name="radiofilter" id="default" value=''>
                         <label class="form-check-label" for="default">
                           Default
                         </label>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radiofilter" id="htol" >
+                      <div class="form-check my-2">
+                        <input class="form-check-input shadow" type="radio" name="radiofilter" id="htol" value='htol'>
                         <label class="form-check-label" for="htol">
-                          Price High to Low 
+                            Sort by Price(Descending)
                         </label>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radiofilter" id="ltoh">
+                      <div class="form-check my-2">
+                        <input class="form-check-input shadow" type="radio" name="radiofilter" id="ltoh" value='ltoh'>
                         <label class="form-check-label" for="ltoh">
-                            Price Low to High
+                            Sort by Price(Ascending)
                         </label>
                       </div>
-                      <input type='submit' value='SORT'>
+                      <input class='button' type='submit' value='SORT'>
                 </form>
             </div>
         </div>

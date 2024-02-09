@@ -1,1 +1,14 @@
 {% extends "base.html" %}
+
+{% block title %}Thank you{% endblock title %}
+
+
+{% block content %}
+    <div class='container-fluid d-flex flex-column justify-content-center align-items-center' style='height:90vh;'>
+        <div>
+            <h1 class="text-center lh-1" style='font-size:8em;'>Thank You</h1>
+            <p class="profileinfo text-center" style='letter-spacing:5px; word-spacing:3px'> &rsquo;ELEVATE YOUR STYLE&rsquo;</p>
+        </div>
+        <a  class='button mt-5' href="{% url "apparelapp:home"  %}">Go to Home</a>
+    </div>
+{% endblock content %}

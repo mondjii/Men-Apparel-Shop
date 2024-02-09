@@ -13,7 +13,7 @@ My Cart
             <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z"/>
             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
         </svg>
-        <h1 class='px-5'>Your Shopping Cart</h1>
+        <h1 class='ms-5 me-3'>Your Shopping Cart</h1> <span class='m-auto fw-semibold'>{{numofitems}} item(s)</span>
         </div>
         <nav class="navbar">
             <div class="container-fluid">
@@ -71,8 +71,12 @@ My Cart
                                         <div>
                                             <h6>Order Total: ------------- {{total}} <h5>
                                             <h6>Shipping Fee: ------------ &#8369;30.00<h5>
-                                            <hr> 
+                                            <hr>
+                                            {% if numofitems == 0 %}
+                                            <h5>Total: &#8369; {{total| add:0.00 }}<h5>
+                                            {% else %}
                                             <h5>Total: &#8369; {{total| add:30.00 }}<h5>
+                                            {% endif %} 
                                         </div>
                                     </div>
                                 </div>                                  

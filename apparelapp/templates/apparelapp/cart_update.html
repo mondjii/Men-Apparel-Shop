@@ -4,5 +4,17 @@
 
 
 {% block content %}
+<div class='container p-2'>
 
+</div>
+<img src="{{items.product_purchase.img.url }}" alt="image of {{ item.product_purchase.name|truncatechars:2 }}">
+{{items.product_purchase.name}}
+{{items.product_purchase.sub_type}}
+price: {{items.product_purchase.price}} 
+total amount: {{items.total_amount}}
+<form method='post'>
+{% csrf_token %}
+{{form.as_p}}
+<input class='button' type='submit' value='Update'>
+</form>
 {% endblock content %}

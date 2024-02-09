@@ -371,7 +371,7 @@ footer .row .foot .row .col p{
 .whiteblur{
     backdrop-filter: blur(6px);
     background-color: #e2e2e222;
-    color: white;
+    color: rgb(247, 224, 189);
     display: inline-block;
     padding: 5px;
     border-radius: 10px;
@@ -382,6 +382,16 @@ footer .row .foot .row .col p{
     display: inline-block;
     border-radius: 10px;
 
+}
+
+.filtercategory{
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.47);
+    padding: 0.5rem;
+}
+
+.filtercategory:hover{
+    opacity: 0.7;
 }
 
 

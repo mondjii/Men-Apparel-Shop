@@ -4,5 +4,22 @@
 {% block title %}Item Delete{% endblock title %}
 
 {% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="rounded shadow-lg p-5">
+        <div class='d-flex justify-content-center align-items-center my-2'>
+            <img class='rounded-circle shadow' src="{{items.product_purchase.img.url}}" alt='item purchase img' width='250' height='250'>
+            <div class=' ms-5'>
+                <h3 class="fw-semibold">{{ items.product_purchase.name }} </h3>
+                <p> x<span class='fw-bolder'>{{ items.quantity }}</span> pc(s) </p>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <p class="fw-semibold"> Are you sure you want to delete?</p>
+            
+            <input class="btn btn-danger" type="submit" value="Delete">
+        </form>
+    </div>
+</div>
 
 {% endblock content %}
