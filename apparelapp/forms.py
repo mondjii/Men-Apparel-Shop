@@ -1,7 +1,7 @@
 from typing import Any
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from .models import UserInfo
+from .models import UserInfo, CartItem
 
 from django.contrib.auth.models import User
 
@@ -93,6 +93,7 @@ class TopwearForm(forms.Form):
                             widget=forms.RadioSelect)
     
 class FootwearForm(forms.Form):
+
     quantity = forms.IntegerField(initial=1, 
                                   min_value=1, 
                                   max_value=5)
@@ -106,3 +107,48 @@ class FootwearForm(forms.Form):
                                 ('10.5in', '10.5 inches')
                             ],
                             widget=forms.RadioSelect)
+    
+class TopUpdateForm(forms.ModelForm):
+    class Meta:
+        model = CartItem
+        fields = ('size','quantity')
+        widgets = {
+            'size': forms.RadioSelect(choices=[
+                ('S', 'Small'),
+                ('M', 'Medium'),
+                ('L', 'large'),
+                ('XL', 'X Large'),
+                ('XXL', 'XX Large'),
+                ('XXXL', 'XXX Large')           
+            ]),
+        }
+
+class BotUpdateForm(forms.ModelForm):
+    class Meta:
+        model = CartItem
+        fields = ('size','quantity')
+        widgets = {
+            'size': forms.RadioSelect(choices=[
+                ('28in', '28 inches'),
+                ('29in', '29 inches'),
+                ('30in', '30 inches'),
+                ('31in', '31 inches'),
+                ('32in', '32 inches'),
+                ('free', '32+ inches (Free Size)')
+            ]),
+        }
+
+class FootUpdateForm(forms.ModelForm):
+    class Meta:
+        model = CartItem
+        fields = ('size','quantity')
+        widgets = {
+            'size': forms.RadioSelect(choices=[
+                ('8in', '8 inches'),
+                ('8.5in', '8.5 inches'),
+                ('9in', '9 inches'),
+                ('9.5in', '9.5 inches'),
+                ('10in', '10 inches'),
+                ('10.5in', '10.5 inches')
+            ]),
+        }

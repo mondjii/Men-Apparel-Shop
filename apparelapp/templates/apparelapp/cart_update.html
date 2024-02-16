@@ -1,20 +1,41 @@
 {% extends "base.html" %}
+{% load customfilters %}
 
 {% block title %}Cart Update{% endblock title %}
 
 
 {% block content %}
-<div class='container p-2'>
-
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="rounded shadow-lg p-5 bg-secondary">
+        <div class='d-flex justify-content-center align-items-center '>
+            <img class='rounded-circle shadow' src="{{items.product_purchase.img.url}}" alt='item purchase img' width='250' height='250'>
+            <div class=' ms-5'>
+                <h3 class="fw-semibold whiteblur">{{ items.product_purchase.name }} </h3><br>
+                <p class='whiteblur'> x<span class='fw-bolder '>{{ items.quantity }}</span> pc(s) </p>
+            </div>
+        </div>
+        <form method='POST'>
+            {% csrf_token %}
+            <div class="form-group mt-3">
+                <label class='form-label whiteblur' for='size'>{{updateform.size.label_tag}}</label>
+                <br>
+                <div class="form-check form-check-inline">
+                    {% for size in updateform.size %}
+                    <span class='rounded p-2 mx-1 whiteblur my-1'>{{size}}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class='d-flex justify-content-between '>
+                <div>
+                    <label class='form-label whiteblur' for='qty'>
+                        {{updateform.quantity.label_tag}}
+                    </label>
+                    {{updateform.quantity|add_id:'qty'|add_class:'form-control lengths'}}
+                </div>
+            </div>            
+            <input class="btn btn-danger mt-3" type="submit" value="Delete">
+        </form>
+    </div>
 </div>
-<img src="{{items.product_purchase.img.url }}" alt="image of {{ item.product_purchase.name|truncatechars:2 }}">
-{{items.product_purchase.name}}
-{{items.product_purchase.sub_type}}
-price: {{items.product_purchase.price}} 
-total amount: {{items.total_amount}}
-<form method='post'>
-{% csrf_token %}
-{{form.as_p}}
-<input class='button' type='submit' value='Update'>
-</form>
+
 {% endblock content %}

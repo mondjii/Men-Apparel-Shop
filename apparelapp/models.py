@@ -55,7 +55,15 @@ class CartItem(models.Model):
 
     def __str__(self) -> str:
         return f'owner: {self.cart_owner} - {self.product_purchase}'
-
+    
+class OrderHistoryList(models.Model):
+    owner =  models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name = 'history')
+    itempurchased = models.ForeignKey(CartItem, on_delete=models.CASCADE)
+    
+    def transferitem(self):
+        allitems = CartItem.objects.all()
+        
+        allitems.delete()
 def truncate_apparel():
     with connection.cursor() as cursor:
         table_name = Apparel._meta.db_table
