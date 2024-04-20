@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (HomeView, ApparelsView,
                     TopwearListView, BottomwearListView, FootwearListView,
                     ApparelDetailView, CartListView, CartDeleteView, CartUpdateView,
-                    ContactFormView, UserInfoDetailView, CreateUser,
+                    ContactFormView, UserInfoDetailView, CreateUser, OrderHistoryListView,
                     thankyoupage, redirecthome)
 
 app_name = 'apparelapp'
@@ -20,6 +20,9 @@ urlpatterns = [
     path('delete/<int:pk>/', CartDeleteView.as_view(), name='delete'),
     path('update/<int:pk>/', CartUpdateView.as_view(), name='update'),
     path('cart/', CartListView.as_view(), name='cart'),
+
+    path('/history', OrderHistoryListView.as_view(), name='history'),
+    # path(),
 
     path('account/', UserInfoDetailView.as_view(), name='account'),
     path('register/', CreateUser.as_view(), name='register'),

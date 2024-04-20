@@ -208,6 +208,15 @@ class OrderHistoryListView(ListView):
     def get_queryset(self):
         return OrderHistoryList.objects.filter(owner__user=self.request.user)
 
+class CheckOutView(ListView):
+    model = CartItem
+    template_name = 'apparelapp/checkout.html'
+    context_object_name = 'itemcheckout'
+
+    def get_queryset(self):
+        return CartItem.objects.filter(owner__user=self.request.user)
+    
+
 
 class UserInfoDetailView(LoginRequiredMixin, DetailView):
     model = UserInfo
